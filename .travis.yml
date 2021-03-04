@@ -22,10 +22,10 @@
     "pip install coveralls"
   ],
   "before_script": [
-    "psql -c \"CREATE DATABASE orders;\" -U postgres"
+    "psql -c \"CREATE DATABASE orders;\" -U wangari"
   ],
   "script": [
-    "python .\manage.py migrate --run-syncdb",
+    "python manage.py migrate --run-syncdb",
     "coverage run --source= manage.py test",
     "coverage report"
   ],
