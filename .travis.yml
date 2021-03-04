@@ -26,7 +26,7 @@
   ],
   "script": [
     "python manage.py migrate",
-    "coverage run --source=apps manage.py test",
+    "coverage run --source= manage.py test",
     "coverage report"
   ],
   "after_success": [
