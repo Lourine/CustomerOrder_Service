@@ -1,30 +1,54 @@
-language: python
-python:
-- '3.8'
-services:
-- postgresql
-env:
-- DJANGO_SETTINGS_MODULE="Order.settings"
-install:
-- pip3 install -r requirements.txt
-- pip install coveralls
-before_script:
-- psql -c "CREATE DATABASE orders;" -U postgres
-script:
-- python manage.py migrate
-- coverage run --source=apps manage.py test
-- coverage report
-after_success:
-- coveralls
-deploy:
-  provider: heroku
-  api_key:
-    secure: aebb396b-23fb-4b51-b757-475f69d55d76
-  app: customerOrder
-  on:
-    repo: Lourine/CustomerOrder_Service
-    all_branches: true
-  skip_cleanup: 'true'
-  run:
-  - "python manage.py makemigrations"
-  - "python manage.py migrate"
+{
+  "language": "python",
+  "os": [
+    "linux"
+  ],
+  "dist": "xenial",
+  "python": [
+    "3.8"
+  ],
+  "services": [
+    "postgresql"
+  ],
+  "env": {
+    "jobs": [
+      {
+        "DJANGO_SETTINGS_MODULE": "\"Order.settings\""
+      }
+    ]
+  },
+  "install": [
+    "pip3 install -r requirements.txt",
+    "pip install coveralls"
+  ],
+  "before_script": [
+    "psql -c \"CREATE DATABASE orders;\" -U postgres"
+  ],
+  "script": [
+    "python manage.py migrate",
+    "coverage run --source=apps manage.py test",
+    "coverage report"
+  ],
+  "after_success": [
+    "coveralls"
+  ],
+  "deploy": [
+    {
+      "provider": "heroku",
+      "strategy": "api",
+      "api_key": {
+        "secure": "aebb396b-23fb-4b51-b757-475f69d55d76"
+      },
+      "app": "customerOrder",
+      "on": {
+        "repo": "Lourine/CustomerOrder_Service",
+        "all_branches": true
+      },
+      "skip_cleanup": true,
+      "run": [
+        "python manage.py makemigrations",
+        "python manage.py migrate"
+      ]
+    }
+  ]
+}
