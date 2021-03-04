@@ -39,7 +39,7 @@
       "provider": "heroku",
       "strategy": "api",
       "api_key": {
-        "secure": "SECURE_KEY"
+        "secure": "aebb396b-23fb-4b51-b757-475f69d55d76"
       },
       "app": "CustomerOrder",
       "on": {
