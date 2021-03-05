@@ -3,11 +3,12 @@ from .models import User
 from django.contrib import auth
 from rest_framework.exceptions import AuthenticationFailed
 
-
+ 
 class RegisterSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(required= True)
     password = serializers.CharField(
-        max_length=68, min_length=6, write_only=True)
-
+        max_length=68, min_length=6, write_only=True, required= True)
+ 
     default_error_messages = {
         'username': 'The username should only contain alphanumeric characters'}
 
