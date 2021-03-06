@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 import datetime
-
+# Add this line
+import dj_database_url
 
 
 from pathlib import Path
@@ -33,7 +34,10 @@ SECRET_KEY = '=e)w)$li*nzdnd=x8f$_d65^on1p$b*0k$rp^*e79zbxgk+3sj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Add this line
+PRODUCTION = os.environ.get('DATABASE_URL') != None
+
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL='authentication.User'
 # Application definition
@@ -61,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+      # Add this line
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Orders.urls'
@@ -97,6 +103,12 @@ DATABASES = {
     'PASSWORD':'7890',
     }
 }
+
+# Add this line
+# If Using Heroku Environemnt, then Use Database Setting on Heroku
+if PRODUCTION:
+    DATABASES['default'] = dj_database_url.config()
+    
 REST_FRAMEWORK = {
        'NON_FIELD_ERRORS_KEY': 'error',
        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
