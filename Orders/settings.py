@@ -202,5 +202,9 @@ EMAIL_HOST_USER = 'lourinemilly@gmail.com'
 EMAIL_HOST_PASSWORD = '2017twins'
 
 
+SANDBOX_USERNAME = 'sandbox'
+SANDBOX_API_KEY = 'a85611c9133dd7264364741c46a3c6d76c40c7d490a0d8792e13b528743add5c'
+SANDBOX_SENDER = '12376'
+
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
