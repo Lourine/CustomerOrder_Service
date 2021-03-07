@@ -5,8 +5,9 @@ from decouple import config
 
 def SendSMS(username, phone_number, item, amount):
     # Initialize SDK
-    at_username = config('SANDBOX_USERNAME')    # use 'sandbox' for development in the test environment
-    api_key = config('SANDBOX_API_KEY')      # use your sandbox app API key for development in the test environment
+    at_username ='sandbox'
+    # use 'sandbox' for development in the test environment
+    api_key = 'a85611c9133dd7264364741c46a3c6d76c40c7d490a0d8792e13b528743add5c'      # use your sandbox app API key for development in the test environment
     africastalking.initialize(at_username, api_key)
 
     # Initialize a service e.g. SMS
