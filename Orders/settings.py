@@ -31,14 +31,15 @@ SECRET_KEY='=e)w)$li*nzdnd=x8f$_d65^on1p$b*0k$rp^*e79zbxgk+3sj'
 
 MODE=config("MODE", default="dev")
 #SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
 # SECURITY WARNING: don't run with debug turned on in production!
-
+DEBUG=True #set to false in production
 
 # Add this line
 PRODUCTION = os.environ.get('DATABASE_URL') != None
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS='.localhost', '.herokuapp.com', '.127.0.0.1'
 
 AUTH_USER_MODEL='authentication.User'
 # Application definition
