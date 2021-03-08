@@ -22,7 +22,7 @@ from decouple import Csv, config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY='=e)w)$li*nzdnd=x8f$_d65^on1p$b*0k$rp^*e79zbxgk+3sj'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -30,10 +30,10 @@ SECRET_KEY='=e)w)$li*nzdnd=x8f$_d65^on1p$b*0k$rp^*e79zbxgk+3sj'
 # SECURITY WARNING: keep the secret key used in production secret!
 
 MODE=config("MODE", default="dev")
-#SECRET_KEY = config('SECRET_KEY')
-# DEBUG = config('DEBUG', default=False, cast=bool)
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=True #set to false in production
+
 
 # Add this line
 PRODUCTION = os.environ.get('DATABASE_URL') != None
@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'Orders.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-if MODE =="dev":
+if config('MODE')=="dev":
        DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
