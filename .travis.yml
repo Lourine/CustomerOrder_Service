@@ -37,9 +37,9 @@
       "provider": "heroku",
       "strategy": "api",
       "api_key": {
-        "secure": "aebb396b-23fb-4b51-b757-475f69d55d76"
+        "secure": "a603a015-9d15-42b9-85c0-769f28746ae2"
       },
-      "app": "customerOrder",
+      "app": "customerorder",
       "on": {
         "repo": "Lourine/CustomerOrder_Service",
         "all_branches": true
