@@ -30,7 +30,7 @@ SECRET_KEY='=e)w)$li*nzdnd=x8f$_d65^on1p$b*0k$rp^*e79zbxgk+3sj'
 # SECURITY WARNING: keep the secret key used in production secret!
 
 MODE=config("MODE", default="dev")
-SECRET_KEY = config('SECRET_KEY')
+#SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 # SECURITY WARNING: don't run with debug turned on in production!
 
